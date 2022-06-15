@@ -10,7 +10,6 @@ on:
 env:
   duplo_host: https://techstyle.duplocloud.net  
   duplo_token: "${{ secrets.DUPLO_TOKEN }}"
-  AWS_RUNNER: "duplo-admin"
 
 jobs:
   deploy:
@@ -52,4 +51,4 @@ jobs:
         scripts/apply.sh "${{ env.Base_Branch }}" savagex \
           -var ecs_service_name="p-${{ github.event.number }}"
       env:
-        AWS_RUNNER: duplo
+        AWS_RUNNER: duplo-admin
