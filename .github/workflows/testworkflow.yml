@@ -10,6 +10,7 @@ on:
 env:
   duplo_host: https://techstyle.duplocloud.net  
   duplo_token: "${{ secrets.DUPLO_TOKEN }}"
+  AWS_RUNNER: "duplo-admin"
 
 jobs:
   deploy:
