@@ -7,6 +7,10 @@ on:
     - closed
     - synchronize
 
+env:
+  duplo_host: https://techstyle.duplocloud.net  
+  duplo_token: "${{ secrets.DUPLO_TOKEN }}"
+
 jobs:
   deploy:
     name: Build
@@ -28,3 +32,23 @@ jobs:
       run: ls -lrt duplocloud-poc-iac
     - name: check2
       run: ls -lrt
+
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.14.11
+
+    - name: Set env vars for PR open
+      if: github.event.action == 'opened' || github.event.action == 'synchronize'
+      run: |
+        echo "Base_Branch=$(echo $GITHUB_HEAD_REF | tr '/' '-')" >> $GITHUB_ENV
+
+    # Update the scheduled tasks to use the new image
+    - name: Deploy
+      run: |
+        set -euo pipefail
+        cd duplocloud-poc-iac
+        scripts/apply.sh "${{ env.Base_Branch }}" savagex \
+          -var ecs_service_name="p-${{ github.event.number }}"
+      env:
+        AWS_RUNNER: duplo
