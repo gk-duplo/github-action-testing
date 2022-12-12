@@ -5,7 +5,7 @@ on:
       region:
         description: 'aws region'
         type: string
-        required: true
+        required: false
 env:
   duplo_host: https://liquibit-dev.duplocloud.net  # CHANGE ME!
   duplo_token: "${{ secrets.LIQUIBIT_DEV_DUPLO_TOKEN }}"
@@ -20,7 +20,7 @@ jobs:
       
       # Upload to S3
       - name: Get AWS credentials
-        uses: duplocloud/ghactions-aws-jit@master
+        uses: duplocloud/ghactions-aws-jit@feature/DUPLO-6722-aws-region-argument
         with:
            admin: true
            aws_region: ${{ inputs.region }}
