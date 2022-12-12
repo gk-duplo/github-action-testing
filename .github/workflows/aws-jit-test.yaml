@@ -1,0 +1,32 @@
+name: Build and Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'aws region'
+        type: environment
+        required: true
+env:
+  duplo_host: https://liquibit-dev.duplocloud.net  # CHANGE ME!
+  duplo_token: "${{ secrets.LIQUIBIT_DEV_DUPLO_TOKEN }}"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      # Upload to S3
+      - name: Get AWS credentials
+        uses: duplocloud/ghactions-aws-jit@master
+        with:
+           admin: true
+       # How to sync an entire folder
+      - name: Test EC2 list
+        run: aws ec2 describe-instances --region $REGION
+        env:
+          REGION: ${{ inputs.region }}
