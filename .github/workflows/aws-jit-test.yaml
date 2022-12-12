@@ -23,6 +23,7 @@ jobs:
         uses: duplocloud/ghactions-aws-jit@master
         with:
            admin: true
+           aws_region: ${{ inputs.region }}
        # How to sync an entire folder
       - name: Test EC2 list
         run: aws ec2 describe-instances --region $REGION
