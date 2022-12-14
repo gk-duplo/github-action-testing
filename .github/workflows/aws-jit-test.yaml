@@ -20,7 +20,7 @@ jobs:
       
       # Upload to S3
       - name: Get AWS credentials
-        uses: duplocloud/ghactions-aws-jit@fff9f31df51b300f69fb740b041ea6bec74c6b4a
+        uses: duplocloud/ghactions-aws-jit@feature/DUPLO-6722-aws-region-argument
         with:
            admin: true
            aws_region: ${{ inputs.region }}
