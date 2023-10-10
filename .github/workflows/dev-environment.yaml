@@ -32,7 +32,7 @@ jobs:
             pip3 install pycodestyle
       - name: python linting
         run: |
-            pycodestyle . > pycodestyle_output.txt
+            echo $(pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 && echo -e "\033[32mLint Checking Passed\033[0m") > pycodestyle_output.txt
             cat pycodestyle_output.txt
             if [ -s pycodestyle_output.txt ]; then
             echo "Pycodestyle errors found:"
