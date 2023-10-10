@@ -3,6 +3,7 @@
 import unittest
 from calculator import Calculator
 
+
 class TestCalculator(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
@@ -26,6 +27,7 @@ class TestCalculator(unittest.TestCase):
     def test_divide_by_zero(self):
         with self.assertRaises(ValueError):
             self.calculator.divide(8, 0)
+
 
 if __name__ == '__main__':
     unittest.main()
