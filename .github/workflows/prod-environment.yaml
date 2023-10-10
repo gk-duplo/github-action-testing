@@ -1,6 +1,5 @@
 name: Build-And-Deploy-Dev
 on:
-  workflow_dispatch:
   pull_request:
     types:
         - opened
