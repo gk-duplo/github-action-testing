@@ -22,18 +22,17 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8
+      - name: Install dependencies
+        run: |
+            python3 -m pip3 install --upgrade pip3
+            pip3 install pycodestyle
       - name: python linting
         run: |
-            sudo apt install software-properties-common
-            sudo add-apt-repository ppa:deadsnakes/ppa
-            sudo apt update
-            sudo apt install python3.8
-            python --version
-            python3 -m venv venv
-            source venv/bin/activate
-            pip3 install pycodestyle    
-            pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 && echo -e "\033[32mLint Checking Passed\033[0m"
-            pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 && echo -e "\033[32mLint Checking Passed\033[0m" > pycodestyle_output.txt
+            pycodestyle . > pycodestyle_output.txt
             cat pycodestyle_output.txt
             if [ -s pycodestyle_output.txt ]; then
             echo "Pycodestyle errors found:"
