@@ -31,7 +31,8 @@ jobs:
             python --version
             sudo apt install python3-pip
             pip3 --version
-            pip3 install -r requirements.txt .
+            pip3 install unittest
+            pip3 install Calculator
             python test/test_calculator.py
 #       - name: Get AWS credentials
 #         uses: duplocloud/ghactions-aws-jit@master
