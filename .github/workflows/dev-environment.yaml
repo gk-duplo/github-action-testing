@@ -34,9 +34,9 @@ jobs:
         run: |
             echo $(pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 && echo -e "\033[32mLint Checking Passed\033[0m") > pycodestyle_output.txt
             if [ -s pycodestyle_output.txt ]; then
-            echo "Pycodestyle errors found:"
-            cat pycodestyle_output.txt
-            exit 1
+                echo "Pycodestyle errors found:"
+                cat pycodestyle_output.txt
+                exit 1
             fi
             deactivate
       - name: python unit tests
