@@ -1,0 +1,66 @@
+name: Build-And-Deploy-Dev
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - akshay-test
+
+env:
+  duplo_host: https://shastacloud.duplocloud.net
+  # duplo_token: "${{ secrets.DUPLO_TOKEN }}"
+  duplo_token: AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAwQViIyEU_ka8CcVhLqwxwgAAAAACAAAAAAAQZgAAAAEAACAAAAA1A8pOWIBq00JURC9ZMtDrXUd0a7DurlszBNlzmcSTWgAAAAAOgAAAAAIAACAAAABCmdIFmWpxcHDzqZefw6YvvyoY0WypcJW_bjafC266t5AAAAB1TSNDVXNZ7VJQo0RMnegwueU1jeMj_r8o42L9dRZmxlNSOZG5PxfRtphEV-oG4hP7fVd2MuRooTneWEZTw1MTwT8YXPMlAV-pSyTsqtJNfUuT0aS021x5o__K4wOBXzELsuqIGC7z6LeVGVSPvdaFycfpNwJDLOzXZO0X-Ovnx7j11XH1DqRlDYtWmtuC3t1AAAAAq0dZCztQRIdKwXKAggQDHlWgfXf5GqjLVzqi6sZNCfPnov3LeJg8lUWzfdlpymuFoiu2dKX6xumVS3iIg-RRoQ
+  IMAGE_NAME: digital-business
+  TENANT_NAME: dev01-shasta
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    environment: Development
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v1
+      - name: python linting
+        run: |
+            sudo apt install software-properties-common
+            sudo add-apt-repository ppa:deadsnakes/ppa
+            sudo apt update
+            sudo apt install python3.8
+            python --version
+            python test_calculator.py
+#       - name: Get AWS credentials
+#         uses: duplocloud/ghactions-aws-jit@master
+#         with:
+#           tenant: default
+#       - name: Login to Amazon ECR
+#         id: login-ecr
+#         uses: aws-actions/amazon-ecr-login@v1
+
+#       - name: Docker Build and Push
+#         uses: docker/build-push-action@v2
+#         with:
+#           context: .
+#           push: true
+#           file: ./Dockerfile
+#           build-args: |
+#             BASE_IMAGE=314033805673.dkr.ecr.ap-south-1.amazonaws.com/node:16-slim
+#           tags: |
+#             ${{ steps.login-ecr.outputs.registry }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+#     outputs:
+#       image: "${{ steps.login-ecr.outputs.registry }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+#   deploy:
+#     needs:
+#       - build
+#     name: Deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to DuploCloud
+#         uses: duplocloud/ghactions-service-update@master
+#         with:
+#           tenant: "${{ env.TENANT_NAME }}"
+#           services: |-
+#             [
+#               { "Name": "digitalbusiness-service", "Image": "${{ needs.build.outputs.image }}" }
+#             ]
