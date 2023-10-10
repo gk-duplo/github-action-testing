@@ -1,9 +1,9 @@
 name: Build-And-Deploy-Dev
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - akshay-test
+  # push:
+  #   branches:
+  #     - akshay-test
 
 env:
   duplo_host: https://shastacloud.duplocloud.net
@@ -75,3 +75,6 @@ jobs:
 #             [
 #               { "Name": "digitalbusiness-service", "Image": "${{ needs.build.outputs.image }}" }
 #             ]
+      - name: Integration testing
+        run: |
+            echo "Integration Testing"
