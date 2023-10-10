@@ -38,7 +38,6 @@ jobs:
                 cat pycodestyle_output.txt
                 exit 1
             fi
-            deactivate
       - name: python unit tests
         run: |
             python test_calculator.py
