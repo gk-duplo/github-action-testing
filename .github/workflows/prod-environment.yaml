@@ -1,8 +1,9 @@
 name: Build-And-Deploy-Dev
 on:
-  pull_request:
-    types:
-        - opened
+    workflow_dispatch:
+    push:
+        branches:
+        - akshay-test
 
 jobs:
   build:
