@@ -1,6 +1,6 @@
 # test_calculator.py
 
-import unittest2
+import unittest
 from calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
