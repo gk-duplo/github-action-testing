@@ -32,3 +32,4 @@ jobs:
                 const core = require('@actions/core')
                 const prNumber = context.payload.number;
                 core.exportVariable('PULL_NUMBER', prNumber);
+                echo $$PULL_NUMBER
