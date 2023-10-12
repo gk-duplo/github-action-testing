@@ -43,13 +43,23 @@ jobs:
                 }
             result-encoding: string
         - name: Issue number
-          run: echo '${{steps.get_issue_number.outputs.result}}'        
-        - name: Test
-          uses: actions/github-script@0.3.0
-          with:
-            github-token: ${{ secrets.PA_TOKEN }}"
-            script: |
-                const core = require('@actions/core')
-                const prNumber = context.payload.number;
-                core.exportVariable('PULL_NUMBER', prNumber);
+          run: echo '${{steps.get_issue_number.outputs.result}}'
+        - name: Get PR Author
+          run: |
+            PR_NUMBER=${{steps.get_issue_number.outputs.result}}
+            GITHUB_TOKEN=${{ secrets.PA_TOKEN }}
+            API_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}"
+  
+            AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
+  
+            echo "PR Author: $AUTHOR"     
+        
+        # - name: Test
+        #   uses: actions/github-script@0.3.0
+        #   with:
+        #     github-token: ${{ secrets.PA_TOKEN }}"
+        #     script: |
+        #         const core = require('@actions/core')
+        #         const prNumber = context.payload.number;
+        #         core.exportVariable('PULL_NUMBER', prNumber);
         
