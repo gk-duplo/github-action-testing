@@ -4,7 +4,8 @@ on:
     push:
         branches:
         - akshay-test
-
+env:
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
   build:
     name: Build
