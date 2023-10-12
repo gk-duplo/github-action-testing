@@ -24,6 +24,26 @@ jobs:
           run: |
             PR_URL=${{ github.event.pull_request.number }}
             echo "Pull Request URL: $PR_URL"
+        - uses: actions/github-script@v6
+          id: get_issue_number
+          with:
+            script: |
+                if (context.issue.number) {
+                // Return issue number if present
+                return context.issue.number;
+                } else {
+                // Otherwise return issue number from commit
+                return (
+                    await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                    commit_sha: context.sha,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    })
+                ).data[0].number;
+                }
+            result-encoding: string
+        - name: Issue number
+          run: echo '${{steps.get_issue_number.outputs.result}}'        
         - name: Test
           uses: actions/github-script@0.3.0
           with:
@@ -32,4 +52,4 @@ jobs:
                 const core = require('@actions/core')
                 const prNumber = context.payload.number;
                 core.exportVariable('PULL_NUMBER', prNumber);
-                echo $$PULL_NUMBER
+        
