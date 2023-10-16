@@ -52,8 +52,10 @@ jobs:
   
             AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
   
-            echo "PR Author: $AUTHOR"     
-        
+            echo "PR Author: $AUTHOR"    
+        - name: test
+        run: |
+            echo: "HI"
         # - name: Test
         #   uses: actions/github-script@0.3.0
         #   with:
@@ -63,3 +65,10 @@ jobs:
         #         const prNumber = context.payload.number;
         #         core.exportVariable('PULL_NUMBER', prNumber);
         
+# Imp links:
+# https://stackoverflow.com/questions/46340474/set-a-default-reviewer
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# https://dennessphillip.medium.com/default-reviewers-for-pull-requests-7e68ae1a0ed9
+
+# for pull request details
+# https://stackoverflow.com/questions/59077079/how-to-get-pull-request-number-within-github-actions-workflow
