@@ -61,12 +61,16 @@ jobs:
             AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
   
             echo "PR Author: $AUTHOR"
-            echo "${{env.allowed_users}}"
-            if [[ "${{env.allowed_users}}" == *"${GITHUB_ACTOR}"* ]]; then
-              echo "User ${GITHUB_ACTOR} is allowed."
-            else
-              echo "User ${GITHUB_ACTOR} is not allowed to run this workflow."
-              exit 1
+            for author_name in ${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}
+            do
+              if [[ "$AUTHOR" == *"$author_name"* ]]; then
+                echo "User $author is Authorized."
+                break
+              else
+                printf '%s\n' "User ${author_name} is not allowed to run this workflow."
+                exit 1
+              fi
+            done
         - uses: actions/checkout@v1
         - name: Set up Python
           uses: actions/setup-python@v2

@@ -5,6 +5,7 @@ on:
     branches:
       - "feature/*"
       - "develop"
+
 jobs:
   build:
     name: Build
@@ -34,3 +35,4 @@ jobs:
       - name: python unit tests
         run: |
             python test_calculator.py
+
