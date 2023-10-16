@@ -36,5 +36,5 @@ jobs:
       - name: python unit tests
         run: |
             python test_calculator.py
-            echo ${{github.PROD_DEPLOYMENT_APPOVERS_ENV}}
+            echo "$GITHUB_CONTEXT"
 
