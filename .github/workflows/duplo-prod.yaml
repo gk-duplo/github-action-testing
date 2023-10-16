@@ -5,7 +5,8 @@ name: Build-And-Deploy-Production
 #       - "develop"
 on:
   workflow_dispatch:
-
+    branch:
+      - develop
 env:
   duplo_host: https://azibo.duplocloud.net
   duplo_token: "${{ secrets.DUPLO_TOKEN }}"
