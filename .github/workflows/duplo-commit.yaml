@@ -26,8 +26,6 @@ jobs:
             python3 -m pip install --upgrade pip
             pip3 install pycodestyle
       - name: python linting
-        env:
-          PROD_DEPLOYMENT_APPOVERS: ${{secrets.PROD_DEPLOYMENT_APPOVERS}}
         run: |
             pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 > pycodestyle_output.txt && echo -e "\033[32mLint Checking Passed\033[0m"
             if [ -s pycodestyle_output.txt ]; then
@@ -38,4 +36,5 @@ jobs:
       - name: python unit tests
         run: |
             python test_calculator.py
-            echo ${{secrets.PROD_DEPLOYMENT_APPOVERS}}
+            echo ${{env.PROD_DEPLOYMENT_APPOVERS_ENV}}
+
