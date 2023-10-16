@@ -31,8 +31,8 @@ jobs:
             if [ -s pycodestyle_output.txt ]; then
                 echo "Pycodestyle errors found:"
                 cat pycodestyle_output.txt
-                exit 1
                 echo "$allowed_users"
+                exit 1
             fi
       - name: python unit tests
         run: |
