@@ -1,0 +1,119 @@
+name: Build-And-Deploy-Production
+# on:
+#   workflow_dispatch:
+#     branches:
+#       - "develop"
+on:
+  workflow_dispatch:
+    branches:
+      - develop
+env:
+  duplo_host: https://azibo.duplocloud.net
+  duplo_token: "${{ secrets.DUPLO_TOKEN }}"
+  allowed_users: "${{secrets.PROD_DEPLOYMENT_APPOVERS}}"
+  IMAGE_NAME: test-service
+  TENANT_NAME: dev01
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    environment: Development
+    defaults:
+      run:
+        shell: bash
+    steps:
+        - name: getPrUrl
+          id: pr-url
+          uses: ammaratef45/pr-url-action@v1
+        - name: display
+          run: echo ${{ steps.pr-url.outputs.url }}
+        - name: Get Pull Request URL
+          run: |
+            PR_URL=${{ github.event.pull_request.number }}
+            echo "Pull Request URL: $PR_URL"
+        - uses: actions/github-script@v6
+          id: get_issue_number
+          with:
+            script: |
+                if (context.issue.number) {
+                // Return issue number if present
+                return context.issue.number;
+                } else {
+                // Otherwise return issue number from commit
+                return (
+                    await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                    commit_sha: context.sha,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    })
+                ).data[0].number;
+                }
+            result-encoding: string
+        - name: Issue number
+          run: echo '${{steps.get_issue_number.outputs.result}}'
+        - name: Get PR Author
+          run: |
+            PR_NUMBER=${{steps.get_issue_number.outputs.result}}
+            GITHUB_TOKEN=${{ secrets.PA_TOKEN }}
+            API_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}"
+  
+            AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
+  
+            echo "PR Author: $AUTHOR"
+            echo "${{env.allowed_users}}"
+            if [[ "${{env.allowed_users}}" == *"${GITHUB_ACTOR}"* ]]; then
+              echo "User ${GITHUB_ACTOR} is allowed."
+            else
+              echo "User ${GITHUB_ACTOR} is not allowed to run this workflow."
+              exit 1
+        - uses: actions/checkout@v1
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+              python-version: 3.8
+        - name: Install dependencies
+          run: |
+              python3 -m pip install --upgrade pip
+              pip3 install pycodestyle
+        - name: python linting
+          run: |
+              pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 > pycodestyle_output.txt && echo -e "\033[32mLint Checking Passed\033[0m"
+              if [ -s pycodestyle_output.txt ]; then
+                  echo "Pycodestyle errors found:"
+                  cat pycodestyle_output.txt
+                  exit 1
+              fi
+        - name: python unit tests
+          run: |
+              python test_calculator.py
+        - name: Get AWS credentials
+          run: |
+            echo "Getting AWS credentials"
+        - name: Login to Amazon ECR
+          run: |
+            echo "Log in to Amazon ECR"
+        - name: Docker Build and Push
+          run: |
+            echo "Building Image and Pushing image to ECR"
+  deploy:
+        needs:
+          - build
+        name: Deploy
+        runs-on: ubuntu-latest
+        steps:
+          - name: Deploy to DuploCloud
+            run: |
+              echo "Deploying Image to duplocloud"
+          - name: Integration testing
+            run: |
+                echo "Integration Testing"
+
+
+# Imp links:
+# https://stackoverflow.com/questions/46340474/set-a-default-reviewer
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# https://dennessphillip.medium.com/default-reviewers-for-pull-requests-7e68ae1a0ed9
+
+# for pull request details
+# https://stackoverflow.com/questions/59077079/how-to-get-pull-request-number-within-github-actions-workflow
