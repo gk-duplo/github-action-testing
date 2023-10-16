@@ -38,4 +38,4 @@ jobs:
       - name: python unit tests
         run: |
             python test_calculator.py
-            echo "$PROD_DEPLOYMENT_APPOVERS"
+            echo ${{secrets.PROD_DEPLOYMENT_APPOVERS}}
