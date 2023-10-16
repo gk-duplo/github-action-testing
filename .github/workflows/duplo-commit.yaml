@@ -5,6 +5,8 @@ on:
     branches:
       - "feature/*"
       - "develop"
+env:
+  allowed_users: "${{secrets.PROD_DEPLOYMENT_APPOVERS}}"
 jobs:
   build:
     name: Build
@@ -30,6 +32,7 @@ jobs:
                 echo "Pycodestyle errors found:"
                 cat pycodestyle_output.txt
                 exit 1
+                echo "$allowed_users"
             fi
       - name: python unit tests
         run: |
