@@ -61,14 +61,13 @@ jobs:
             AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
   
             echo "PR Author: $AUTHOR"
-            #echo "${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}"
-            for author in ${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}
+            for author_name in ${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}
             do
-              if [[ "$AUTHOR" == *"$author"* ]]; then
-                echo "User $author is allowed."
+              if [[ "$AUTHOR" == *"$author_name"* ]]; then
+                echo "User $author is Authorized."
                 break
               else
-                echo "User ${author} is not allowed to run this workflow."
+                printf '%s\n' "User ${author_name} is not allowed to run this workflow."
                 exit 1
               fi
             done
