@@ -40,7 +40,7 @@ jobs:
           names="akshay-duplo gk-duplo"
           for name in $names:
           do
-              if [ "akshay-duplo" == $name ]
+              if [ "akshay-124" == $name ]
               then 
                   echo "Authorized author"
                   break
