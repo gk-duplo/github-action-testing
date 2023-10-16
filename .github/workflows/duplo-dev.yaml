@@ -1,0 +1,58 @@
+name: Build-And-Deploy-Develop
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - 'develop'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    environment: Development
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8
+      - name: Install dependencies
+        run: |
+            python3 -m pip install --upgrade pip
+            pip3 install pycodestyle
+      - name: python linting
+        run: |
+            pycodestyle . --exclude=venv,.aws-sam --max-line-length=200 > pycodestyle_output.txt && echo -e "\033[32mLint Checking Passed\033[0m"
+            if [ -s pycodestyle_output.txt ]; then
+                echo "Pycodestyle errors found:"
+                cat pycodestyle_output.txt
+                exit 1
+            fi
+      - name: python unit tests
+        run: |
+            python test_calculator.py
+      - name: Get AWS credentials
+        run: |
+          echo "Getting AWS credentials"
+      - name: Login to Amazon ECR
+        run: |
+          echo "Log in to Amazon ECR"
+      - name: Docker Build and Push
+        run: |
+          echo "Building Image and Pushing image to ECR"
+  deploy:
+    needs:
+      - build
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DuploCloud
+        run: |
+          echo "Deploying Image to duplocloud"
+      - name: Integration testing
+        run: |
+            echo "Integration Testing"
