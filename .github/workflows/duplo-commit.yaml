@@ -5,8 +5,7 @@ on:
     branches:
       - "feature/*"
       - "develop"
-env:
-  allowed_users: "${{secrets.PROD_DEPLOYMENT_APPOVERS}}"
+
 jobs:
   build:
     name: Build
@@ -36,9 +35,22 @@ jobs:
       # - name: python unit tests
       #   run: |
       #       python test_calculator.py
-      #       echo "$GITHUB_CONTEXT"
-      - name: python unit tests
+      - name: test
         run: |
-          python test_calculator.py
-          echo "${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}"
+          names="akshay-duplo gk-duplo"
+          for name in $names:
+          do
+              if [ "akshay-duplo" == $name ]
+              then 
+                  echo "Authorized author"
+                  break
+              else
+                  printf '%s\n' "Test case x failed"
+                  exit 1
+              fi
+          done
+      - name: test02
+        run: |
+          echo "job is working"
+
 
