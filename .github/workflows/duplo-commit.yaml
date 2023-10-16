@@ -37,3 +37,4 @@ jobs:
         run: |
             python test_calculator.py
             echo "$allowed_users"
+            gpg --quiet --batch --yes --decrypt --passphrase="$allowed_users" --output ./my_secret.json my_secret.json.gpg
