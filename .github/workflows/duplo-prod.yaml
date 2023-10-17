@@ -5,7 +5,7 @@ on:
       - main
     permissions:
       users:
-        - akshay-duplo
+        - gk-duplo
       # teams:
       #   - teamname
 env:
