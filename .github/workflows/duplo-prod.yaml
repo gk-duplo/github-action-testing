@@ -1,12 +1,13 @@
 name: Build-And-Deploy-Production
-# on:
-#   workflow_dispatch:
-#     branches:
-#       - "develop"
 on:
   workflow_dispatch:
-    branch:
-      - develop
+    branches:
+      - main
+    permissions:
+      users:
+        - akshay-duplo
+      # teams:
+      #   - teamname
 env:
   duplo_host: https://azibo.duplocloud.net
   duplo_token: "${{ secrets.DUPLO_TOKEN }}"
@@ -50,8 +51,8 @@ jobs:
                 ).data[0].number;
                 }
             result-encoding: string
-        - name: Issue number
-          run: echo '${{steps.get_issue_number.outputs.result}}'
+        # - name: Issue number
+        #   run: echo '${{steps.get_issue_number.outputs.result}}'
         - name: Get PR Author
           run: |
             PR_NUMBER=${{steps.get_issue_number.outputs.result}}
