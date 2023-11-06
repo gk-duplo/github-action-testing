@@ -79,7 +79,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-
 # Imp links:
 # https://stackoverflow.com/questions/46340474/set-a-default-reviewer
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
