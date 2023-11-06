@@ -2,6 +2,31 @@
 
 
 
+## v0.2.0 (2023-11-06)
+
+### Feature
+
+* feat(test): Added commit ([`e984bef`](https://github.com/gk-duplo/github-action-testing/commit/e984bef6363970429b12b291049d4863df9018fe))
+
+### Fix
+
+* fix(Test): Fixed issue with login ([`8a3c029`](https://github.com/gk-duplo/github-action-testing/commit/8a3c029770e63415a218209524e16461765c1be3))
+
+### Unknown
+
+* Merge pull request #5 from gk-duplo/develop
+
+Develop ([`87b4054`](https://github.com/gk-duplo/github-action-testing/commit/87b405437db981a30421eec4f7609084bc8aa346))
+
+* Merge pull request #4 from gk-duplo/bug/fix1
+
+fix(Test): Fixed issue with login ([`46d4118`](https://github.com/gk-duplo/github-action-testing/commit/46d411899f78460461c74fb7ac9440704fd43565))
+
+* Merge pull request #3 from gk-duplo/feature/testing
+
+feat(test): Added commit ([`7490f26`](https://github.com/gk-duplo/github-action-testing/commit/7490f2672aef34d4d308d7561aca6a7191fe7006))
+
+
 ## v0.1.0 (2023-11-06)
 
 ### Feature
