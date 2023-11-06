@@ -19,54 +19,6 @@ jobs:
       run:
         shell: bash
     steps:
-        - name: getPrUrl
-          id: pr-url
-          uses: ammaratef45/pr-url-action@v1
-        - name: display
-          run: echo ${{ steps.pr-url.outputs.url }}
-        - name: Get Pull Request URL
-          run: |
-            PR_URL=${{ github.event.pull_request.number }}
-            echo "Pull Request URL: $PR_URL"
-        - uses: actions/github-script@v6
-          id: get_issue_number
-          with:
-            script: |
-                if (context.issue.number) {
-                // Return issue number if present
-                return context.issue.number;
-                } else {
-                // Otherwise return issue number from commit
-                return (
-                    await github.rest.repos.listPullRequestsAssociatedWithCommit({
-                    commit_sha: context.sha,
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    })
-                ).data[0].number;
-                }
-            result-encoding: string
-        # - name: Issue number
-        #   run: echo '${{steps.get_issue_number.outputs.result}}'
-        - name: Get PR Author
-          run: |
-            PR_NUMBER=${{steps.get_issue_number.outputs.result}}
-            GITHUB_TOKEN=${{ secrets.PA_TOKEN }}
-            API_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}"
-  
-            AUTHOR=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" $API_URL | jq -r '.user.login')
-  
-            echo "PR Author: $AUTHOR"
-            for author_name in ${{vars.PROD_DEPLOYMENT_APPOVERS_ENV}}
-            do
-              if [[ "$AUTHOR" == *"$author_name"* ]]; then
-                echo "User $author is Authorized."
-                break
-              else
-                printf '%s\n' "User ${author_name} is not allowed to run this workflow."
-                exit 1
-              fi
-            done
         - uses: actions/checkout@v1
         - name: Set up Python
           uses: actions/setup-python@v2
@@ -108,6 +60,24 @@ jobs:
           - name: Integration testing
             run: |
                 echo "Integration Testing"
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - deploy
+    concurrency: release
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Python Semantic Release
+      uses: python-semantic-release/python-semantic-release@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
 # Imp links:
