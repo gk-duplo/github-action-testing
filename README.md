@@ -4,3 +4,4 @@
 
 ## Fixed one bug
 
+## Added feature 1
