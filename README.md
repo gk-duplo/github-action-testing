@@ -14,3 +14,5 @@
 ## Added bug3
 
 ## Fixed bug 5
+
+## fixed bug 6
