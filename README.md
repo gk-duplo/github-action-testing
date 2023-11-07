@@ -5,3 +5,5 @@
 ## Fixed one bug
 
 ## Added feature 1
+
+## Fixed bug 2
