@@ -8,3 +8,5 @@
 ## Added feature 1
 
 ## Fixed bug 2
+
+## Added feature 3
