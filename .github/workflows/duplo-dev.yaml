@@ -2,7 +2,7 @@ name: Build-And-Deploy-Develop
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, edited]
     branches:
       - 'develop'
 
@@ -50,9 +50,49 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Get AWS credentials
+        uses: duplocloud/ghactions-aws-jit@master
+        with:
+          admin: true
+      - name: Copy infra code form s3
+        run: |
+          echo "Copy from s3"
+      - name: Apply Infra Changes 
+        run: |
+         echo "Run Terraform"
       - name: Deploy to DuploCloud
         run: |
           echo "Deploying Image to duplocloud"
       - name: Integration testing
         run: |
             echo "Integration Testing"
+  Verify:
+    runs-on: ubuntu-latest
+    name: Verify
+    needs:
+      - deploy
+    steps:
+      - name: Get AWS credentials
+        uses: duplocloud/ghactions-aws-jit@master
+        with:
+          admin: true
+      - name: Sync code form s3
+        run: |
+         echo "Copy from s3"
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Configure Test properties
+        run: |
+          echo "Configure Tests"
+      - name: Install dependencies
+        run: |
+          echo "Build code"
+      - name: Run Tests
+        continue-on-error: true 
+        run: |
+          echo "Sleep before running test for lambda update"
+      - name: Run Tests
+        continue-on-error: true 
+        run: |
+          echo "Upload HTML code"
