@@ -55,3 +55,33 @@ jobs:
       - name: Integration testing
         run: |
             echo "Integration Testing"
+  Verify:
+    runs-on: ubuntu-latest
+    name: Verify
+    needs:
+      - deploy
+    steps:
+      - name: Get AWS credentials
+        uses: duplocloud/ghactions-aws-jit@master
+        with:
+          admin: true
+      - name: Sync code form s3
+        run: |
+         echo "Copy from s3"
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Configure Test properties
+        run: |
+          echo "Configure Tests"
+      - name: Install dependencies
+        run: |
+          echo "Build code"
+      - name: Run Tests
+        continue-on-error: true 
+        run: |
+          echo "Sleep before running test for lambda update"
+      - name: Run Tests
+        continue-on-error: true 
+        run: |
+          echo "Upload HTML code"
