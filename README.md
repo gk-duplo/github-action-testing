@@ -12,3 +12,5 @@
 ## Added feature 3
 
 ## Added bug3
+
+## Fixed bug 5
