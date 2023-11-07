@@ -2,6 +2,19 @@
 
 
 
+## v0.5.1 (2023-11-07)
+
+### Fix
+
+* fix(Login): Fixed bug 6 ([`0ea8e9f`](https://github.com/gk-duplo/github-action-testing/commit/0ea8e9fb88727bad9d513775c5242721283b4522))
+
+### Unknown
+
+* Develop (#19)
+
+* fix(Workfkow): Fixed issue with Tenant id ([`119adb6`](https://github.com/gk-duplo/github-action-testing/commit/119adb66f969ac04f4e3eff63285797d668a2575))
+
+
 ## v0.5.0 (2023-11-07)
 
 ### Feature
