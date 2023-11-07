@@ -2,6 +2,13 @@
 
 
 
+## v0.3.0 (2023-11-07)
+
+### Feature
+
+* feat(Login): Added Login feature ([`3a04a06`](https://github.com/gk-duplo/github-action-testing/commit/3a04a060d5d22723ecfbad05b13086478859bd47))
+
+
 ## v0.2.0 (2023-11-06)
 
 ### Feature
@@ -12,20 +19,6 @@
 
 * fix(Test): Fixed issue with login ([`8a3c029`](https://github.com/gk-duplo/github-action-testing/commit/8a3c029770e63415a218209524e16461765c1be3))
 
-### Unknown
-
-* Merge pull request #5 from gk-duplo/develop
-
-Develop ([`87b4054`](https://github.com/gk-duplo/github-action-testing/commit/87b405437db981a30421eec4f7609084bc8aa346))
-
-* Merge pull request #4 from gk-duplo/bug/fix1
-
-fix(Test): Fixed issue with login ([`46d4118`](https://github.com/gk-duplo/github-action-testing/commit/46d411899f78460461c74fb7ac9440704fd43565))
-
-* Merge pull request #3 from gk-duplo/feature/testing
-
-feat(test): Added commit ([`7490f26`](https://github.com/gk-duplo/github-action-testing/commit/7490f2672aef34d4d308d7561aca6a7191fe7006))
-
 
 ## v0.1.0 (2023-11-06)
 
@@ -34,10 +27,6 @@ feat(test): Added commit ([`7490f26`](https://github.com/gk-duplo/github-action-
 * feat(Pipelienes): Added pipelines ([`24e5317`](https://github.com/gk-duplo/github-action-testing/commit/24e5317e933e82f71916e08815af3067818cf13b))
 
 ### Unknown
-
-* Merge pull request #2 from gk-duplo/develop
-
-Develop ([`2bf66a6`](https://github.com/gk-duplo/github-action-testing/commit/2bf66a6df1ef00a48dbecd930dde2c241cafb038))
 
 * added prod release ([`d9b6a2f`](https://github.com/gk-duplo/github-action-testing/commit/d9b6a2f6496adb91bda248b715a2a8e76b3227ea))
 
@@ -49,47 +38,15 @@ Develop ([`2bf66a6`](https://github.com/gk-duplo/github-action-testing/commit/2b
 
 * fix (#22) (#23) ([`bbaaa92`](https://github.com/gk-duplo/github-action-testing/commit/bbaaa924b722f83066644a631241fe974acb8223))
 
-* Merge pull request #21 from duplocloud/develop
-
-Develop ([`1aab1e5`](https://github.com/gk-duplo/github-action-testing/commit/1aab1e52cb6f012688e8945ecd726d612708d917))
-
-* Merge pull request #20 from duplocloud/feature/testing
-
-update prod pipeline ([`083d3d8`](https://github.com/gk-duplo/github-action-testing/commit/083d3d815431fc1e7cfa84ca0e865014549d3a97))
-
 * update prod pipeline ([`c4d8929`](https://github.com/gk-duplo/github-action-testing/commit/c4d89298ac75bb8f2ffc9dd44d1e19bb8f3eea4f))
-
-* Merge pull request #19 from duplocloud/develop
-
-Develop ([`9fea031`](https://github.com/gk-duplo/github-action-testing/commit/9fea0319ec92c9a3f397b33bc8abd4883f9dab6f))
-
-* Merge pull request #18 from duplocloud/feature/testing
-
-testing permission for prod pipeline ([`3998de7`](https://github.com/gk-duplo/github-action-testing/commit/3998de71d58e166b8c4a505ea70e7cd4e45340d7))
 
 * testing permission for prod pipeline ([`ebd053b`](https://github.com/gk-duplo/github-action-testing/commit/ebd053b2e3278f42abca5061034e28641fd1c7d5))
 
-* Merge pull request #17 from duplocloud/develop
-
-testing permission for prod pipeline ([`0619d30`](https://github.com/gk-duplo/github-action-testing/commit/0619d300e9505c83b955bdda35b08e8848ffb236))
-
 * testing permission for prod pipeline ([`d534067`](https://github.com/gk-duplo/github-action-testing/commit/d53406711b735e5f886c2cd1324205cb4b1fb66f))
-
-* Merge pull request #16 from duplocloud/develop
-
-Develop ([`a600c3e`](https://github.com/gk-duplo/github-action-testing/commit/a600c3e71b1449f1b6aebdbb0d7e377c4ec63ac4))
 
 * fixed conflicts ([`7f16c8e`](https://github.com/gk-duplo/github-action-testing/commit/7f16c8e04fd23293e5c50a3bae08a808793a4aff))
 
-* Merge pull request #15 from duplocloud/feature/testing
-
-update pielines with new changes 04 ([`647da1f`](https://github.com/gk-duplo/github-action-testing/commit/647da1f20012fb83586094c1002dd44971e84647))
-
 * update pielines with new changes 04 ([`2757775`](https://github.com/gk-duplo/github-action-testing/commit/27577753c225356325fe1dc4e25b48c0468130f6))
-
-* Merge pull request #14 from duplocloud/feature/testing
-
-update pielines with new changes 04 ([`cc9731d`](https://github.com/gk-duplo/github-action-testing/commit/cc9731d01f392fe0726ec8e7e72e82883343363f))
 
 * update pielines with new changes 04 ([`d05ca89`](https://github.com/gk-duplo/github-action-testing/commit/d05ca89bfe5952146173aa6cc59b29bdb92e1893))
 
@@ -98,14 +55,6 @@ update pielines with new changes 04 ([`cc9731d`](https://github.com/gk-duplo/git
 * test changes (#12) (#13) ([`bdf75c0`](https://github.com/gk-duplo/github-action-testing/commit/bdf75c093b2f14064760902460302ad7bd97ca0a))
 
 * test changes (#12) ([`cad5541`](https://github.com/gk-duplo/github-action-testing/commit/cad5541ae2650230491f112cfd78d45562ebfe47))
-
-* Merge pull request #11 from duplocloud/develop
-
-Develop ([`770ddc8`](https://github.com/gk-duplo/github-action-testing/commit/770ddc8ca07acaa8809bfacb762dc857fb693dfc))
-
-* Merge pull request #10 from duplocloud/feature/testing
-
-Feature/testing ([`ebe5e4b`](https://github.com/gk-duplo/github-action-testing/commit/ebe5e4bdb70998a932d03859d5768bffa9194db6))
 
 * update pielines with new changes 03 ([`478e414`](https://github.com/gk-duplo/github-action-testing/commit/478e414857b0bceb24b8c589b7a74a36cc6b13b3))
 
@@ -137,33 +86,9 @@ Feature/testing ([`ebe5e4b`](https://github.com/gk-duplo/github-action-testing/c
 
 * update pielines with new changes 03 ([`23dec73`](https://github.com/gk-duplo/github-action-testing/commit/23dec73b40c8aae4b9e04e147881b809ce083e90))
 
-* Merge pull request #9 from duplocloud/develop
-
-Develop ([`e9f5e37`](https://github.com/gk-duplo/github-action-testing/commit/e9f5e371832731968e24dc395b0fffa30b8354f2))
-
-* Merge pull request #8 from duplocloud/feature/testing
-
-update pielines with new changes 02 ([`eb2dfd7`](https://github.com/gk-duplo/github-action-testing/commit/eb2dfd7185318b874f3c9db414a319f04d73694c))
-
 * update pielines with new changes 02 ([`2d9cdb5`](https://github.com/gk-duplo/github-action-testing/commit/2d9cdb525db8be5efa44b0abdbc9bc61138a32fa))
 
-* Merge pull request #7 from duplocloud/develop
-
-Develop ([`7c05183`](https://github.com/gk-duplo/github-action-testing/commit/7c05183808b19bcb7a8fc5511a157507e0b13230))
-
-* Merge pull request #6 from duplocloud/feature/testing
-
-update pielines with new changes 01 ([`2f80075`](https://github.com/gk-duplo/github-action-testing/commit/2f8007523e9c21bd02c09679b2227ab8c5a5c71b))
-
 * update pielines with new changes 01 ([`c682366`](https://github.com/gk-duplo/github-action-testing/commit/c682366275649a40b193ad39c9a8b68c2ebfd942))
-
-* Merge pull request #5 from duplocloud/develop
-
-Develop to main ([`1b71739`](https://github.com/gk-duplo/github-action-testing/commit/1b71739031216039b3b99a4dd1e24aa1a09a2f62))
-
-* Merge pull request #4 from duplocloud/feature/testing
-
-Feature/testing ([`09075b5`](https://github.com/gk-duplo/github-action-testing/commit/09075b52129c1fed754aee5e56d99074918b13a3))
 
 * update pielines with new changes ([`edd83aa`](https://github.com/gk-duplo/github-action-testing/commit/edd83aa3626aae91fd4096199cddab14ba3c1511))
 
@@ -260,10 +185,6 @@ This reverts commit ce377ebe0b130861d07671df75e40aab4b9a07d2. ([`9109099`](https
 * removing needs ([`a0de427`](https://github.com/gk-duplo/github-action-testing/commit/a0de4272ee803f5ff971c53c760378ccd463d171))
 
 * Making region as string type ([`f5347f3`](https://github.com/gk-duplo/github-action-testing/commit/f5347f3597db14c16da2865d7fd89d7788d0c8ee))
-
-* Merge pull request #2 from duplocloud/testpr
-
-Testpr ([`8c5c1e7`](https://github.com/gk-duplo/github-action-testing/commit/8c5c1e7aa75b62718c485ea518cfd3d9ad84e9fa))
 
 * Admin JIT region pass testing ([`6f0633e`](https://github.com/gk-duplo/github-action-testing/commit/6f0633e133a88cb7f157a20e7e74c152cd467e55))
 
