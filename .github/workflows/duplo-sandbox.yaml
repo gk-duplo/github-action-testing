@@ -4,7 +4,13 @@ on:
   push:
     branches:
       - 'main'
-
+env:
+  duplo_host: https://app0.duplocloud.net
+  duplo_token: "${{ secrets.DUPLO_TOKEN }}"
+  TENANT_NAME: dev01
+  DUPLO_TENANT_ID: 87311f2f-65b5-40c9-9382-58441440fae2
+  SERVICE_NAME: app0-auth
+  
 jobs:
   build:
     name: Build
