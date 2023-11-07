@@ -2,6 +2,17 @@
 
 
 
+## v0.5.0 (2023-11-07)
+
+### Feature
+
+* feat(Login): Added feature 3 ([`7c622da`](https://github.com/gk-duplo/github-action-testing/commit/7c622da4800e3f3d86b58a0d9d3ab128143360ea))
+
+### Fix
+
+* fix(Login): Fixed issue with phone number ([`d4bc976`](https://github.com/gk-duplo/github-action-testing/commit/d4bc97674dc7a312028edf4a7d7c3e7e640c0a31))
+
+
 ## v0.4.0 (2023-11-07)
 
 ### Ci
