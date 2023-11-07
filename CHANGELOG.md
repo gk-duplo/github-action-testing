@@ -2,11 +2,38 @@
 
 
 
+## v0.4.0 (2023-11-07)
+
+### Ci
+
+* ci(Pipelines): Refactored Pipelines ([`2dcbd3a`](https://github.com/gk-duplo/github-action-testing/commit/2dcbd3a861c0cf898d5e4859db3e642d2bc07ef8))
+
+* ci(Pipelines): Refactored Pipelines ([`db8833f`](https://github.com/gk-duplo/github-action-testing/commit/db8833fd08fbc1c8799859a63f65e0294c320359))
+
+### Feature
+
+* feat(Login): Added feature 1 ([`98aadd4`](https://github.com/gk-duplo/github-action-testing/commit/98aadd4c0b705901ca4f295ca4240a8497930a2c))
+
+### Fix
+
+* fix(Login): Fixed bug ([`901ddb6`](https://github.com/gk-duplo/github-action-testing/commit/901ddb6bf3f23e2437a5d29517ac48f40bc3f90a))
+
+### Unknown
+
+* Merge branch &#39;main&#39; into develop ([`9649cee`](https://github.com/gk-duplo/github-action-testing/commit/9649cee492d09c2454a4c10afa71a3997a1b975d))
+
+* * fix(Pipeline): Fixed pipelines ([`f849594`](https://github.com/gk-duplo/github-action-testing/commit/f84959400bb109cbf47e84e483ff5533870af56e))
+
+* * fix(Pipeline): Fixed pipelines ([`deee744`](https://github.com/gk-duplo/github-action-testing/commit/deee7444123a7760a081aeacb5c07547e6388080))
+
+
 ## v0.3.0 (2023-11-07)
 
 ### Feature
 
 * feat(Login): Added Login feature ([`3a04a06`](https://github.com/gk-duplo/github-action-testing/commit/3a04a060d5d22723ecfbad05b13086478859bd47))
+
+* feat(Login): Added Login feature ([`b215660`](https://github.com/gk-duplo/github-action-testing/commit/b2156606957cdbcde5fb88a65006f32f1eff131e))
 
 
 ## v0.2.0 (2023-11-06)
